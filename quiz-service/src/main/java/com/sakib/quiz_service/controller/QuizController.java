@@ -2,6 +2,8 @@ package com.sakib.quiz_service.controller;
 
 
 import com.sakib.quiz_service.model.QuestionWrapper;
+import com.sakib.quiz_service.model.QuizDto;
+import com.sakib.quiz_service.model.Response;
 import com.sakib.quiz_service.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,8 @@ public class QuizController {
     QuizService quizService;
 
     @PostMapping("create")
-    public ResponseEntity<String> createQuiz(@RequestBodyam String title) {
-        return quizService.createQuiz(category,numQ,title);
+    public ResponseEntity<String> createQuiz(@RequestBody QuizDto quizDto) {
+        return quizService.createQuiz(quizDto.getCategoryName(), quizDto.getNumQuestions(), quizDto.getTitle());
     }
 
     @GetMapping("get/{id}")
